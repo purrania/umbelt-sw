@@ -39,6 +39,16 @@ setup () {
 
 void
 loop () {
+  int val = analogRead(A0);
+  Serial.println(val);
+  float val2 = (float) val / 1024;
+  val2 -= 1/3;
+  val2 *= 3;
+  //Serial.println(val2);
+  int motor_num = (int) (val2 * 13);
+  //  actuate_motor(motor_num, 64, 0.85);
+  delay(30); 
+  /*
   //haptics_test();
   if (Serial.available() > 0) {
     Serial.setTimeout(60000); // one minute
@@ -46,7 +56,7 @@ loop () {
   haptics_test();
   bool received = getCommandLineFromSerialPort(CommandLine);      //global CommandLine is defined in CommandLine.h
   if (received) DoMyCommand(CommandLine);
-  */
+  *//*
 
     Serial.println();
     Serial.println("Enter your percent_motor, followed by RET:");
@@ -60,10 +70,9 @@ loop () {
     Serial.println("duration: ");
     Serial.print(duration);
     
-    
     control_device(duration, percent_motor, DEFAULT_TEST_CYCLES);
     Serial.println("----COMPLETE!---");
-  }
+  }*/
 }
 
 void
