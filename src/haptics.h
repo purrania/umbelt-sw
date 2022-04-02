@@ -25,3 +25,4 @@ void actuate_motor(int motor_pin, int duration, double percent_motor, int freque
 void actuate_all_motors(int duration, double percent_motor, int frequency);
 void triple_vibrate(int duration, double percent_motor);
 void play_note(int duration, double percent_motor, int chosen_note);
+void haptics_custom_cascade_test();
