@@ -19,3 +19,9 @@ void init_haptics();
 /* --------- Test & Debug functions ---------- */
 void haptics_test();
 void control_device(int duration, double percent_motor, int num_cycles);
+void cascade_motors(int duration, double percent_motor, int num_cycles);
+void jackhammer_actuate(int motor_pin, double intensity, int reps);
+void actuate_motor(int motor_pin, int duration, double percent_motor, int frequency);
+void actuate_all_motors(int duration, double percent_motor, int frequency);
+void triple_vibrate(int duration, double percent_motor);
+void play_note(int duration, double percent_motor, int chosen_note);

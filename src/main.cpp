@@ -29,45 +29,59 @@ void init_indicator_led();
 void
 setup () {
 
-    Serial.begin(115200);
-    Serial.println("Umbelt demo");
+  Serial.begin(115200);
+  Serial.println("Umbelt demo");
 
-    // Init umbelt modules
-    init_haptics();
-    init_indicator_led();
+  // Init umbelt modules
+  init_haptics();
+  init_indicator_led();
+}
+
+/* Note to self: delete this method later */
+void haptics_custom_cascade_test() {
+  Serial.println();
+  Serial.println("Enter your percent_motor, followed by RET:");
+  double percent_motor = Serial.parseInt() * 0.01; // turn to percent
+  Serial.println("percent_motor: ");
+  Serial.print(percent_motor);
+
+  Serial.println();
+  Serial.println("Enter your duration (ms), followed by RET:");
+  int duration = Serial.parseInt();
+  Serial.println("duration: ");
+  Serial.print(duration);    
+    
+  cascade_motors(duration, percent_motor, DEFAULT_TEST_CYCLES);
+  Serial.println("----COMPLETE!---");
 }
 
 void
 loop () {
-  //haptics_test();
-  if (Serial.available() > 0) {
-    Serial.setTimeout(60000); // one minute
-  /* // commandline library stuff
-  haptics_test();
-  bool received = getCommandLineFromSerialPort(CommandLine);      //global CommandLine is defined in CommandLine.h
-  if (received) DoMyCommand(CommandLine);
-  */
+  cascade_motors(10, 0.5, DEFAULT_TEST_CYCLES);
+  // play_note(1000000, 0.5, 4);
+  // delay(100);
+  // play_note(1000000, 0.5, 3);
+  //   delay(100);
+  // play_note(1000000, 0.5, 2);
+  //   delay(100);
 
-    Serial.println();
-    Serial.println("Enter your percent_motor, followed by RET:");
-    double percent_motor = Serial.parseInt() * 0.01; // turn to percent
-    Serial.println("percent_motor: ");
-    Serial.print(percent_motor);
+  // play_note(1000000, 0.5, 3);
+  //   delay(100);
 
-    Serial.println();
-    Serial.println("Enter your duration (ms), followed by RET:");
-    int duration = Serial.parseInt();
-    Serial.println("duration: ");
-    Serial.print(duration);
-    
-    
-    control_device(duration, percent_motor, DEFAULT_TEST_CYCLES);
-    Serial.println("----COMPLETE!---");
-  }
+  // play_note(1000000, 0.5, 4);
+  //   delay(100);
+
+  // play_note(1000000, 0.5, 4);
+  //   delay(100);
+
+  // play_note(1000000, 0.5, 4);
+  //   delay(100);
+
+
 }
 
 void
 init_indicator_led() {
-    pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, HIGH);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
 }
