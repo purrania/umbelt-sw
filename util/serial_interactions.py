@@ -18,4 +18,3 @@ def serial_read(serial_number, length):
     ser.close()
     return s
 
-serial_write('')
